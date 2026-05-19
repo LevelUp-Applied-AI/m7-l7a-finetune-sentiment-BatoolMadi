@@ -112,7 +112,6 @@ def make_training_args(
     epochs: int = 2,
     batch_size: int = 8,
     seed: int = 42,
-    push_to_hub=True,
 ) -> TrainingArguments:
     """Return a TrainingArguments configured for fine-tuning."""
     # TODO: return a TrainingArguments configured with the passed arguments.
@@ -132,7 +131,6 @@ def make_training_args(
         save_strategy="epoch",
         logging_steps=50,
         seed=seed,
-        push_to_hub=push_to_hub,
     )
 
 
@@ -321,6 +319,10 @@ def main() -> None:
     trainer.save_model(output_dir)
     tokenizer.save_pretrained(output_dir)
 
+    # Save training logs
+    with open("training_log.json", "w") as f:
+        json.dump(trainer.state.log_history, f, indent=2)
+
     # Evaluate
     metrics = evaluate_classifier(trainer, tokenized["test"])
     with open("metrics.json", "w") as f:
@@ -369,7 +371,7 @@ def main() -> None:
 
     # Push to Hugging Face Hub.
     # Skipped in CI (DATA_PATH set); requires `huggingface-cli login` locally.
-    if os.environ.get("DATA_PATH") is None:
+    if os.environ.get("CI") is None:
         repo_id = "BatoolMadi/m7-app-review-sentiment"
         try:
             trainer.push_to_hub(repo_id)
