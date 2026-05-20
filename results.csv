@@ -1,0 +1,31 @@
+id,hypothesis_category,text,expected_label,rationale,predicted_label,predicted_probability,correct
+1,negation,The latest update did not improve battery life at all.,negative,Tests whether the model picks up the negation cue or just the trigger word 'improve',negative,0.8115086555480957,True
+2,lexical_trigger,This app is no longer reliable on my phone.,negative,Strong positive cue 'reliable' negated by 'no longer'; tests cue-vs-context handling,negative,0.9434905052185059,True
+3,domain_shift,The team won the championship final last weekend.,neutral,Sports content unrelated to app-review training; tests domain-shift robustness,neutral,0.4123612642288208,True
+4,negation,The redesign does not make the app easier to use.,negative,Tests whether the model recognizes negation around positive usability language,negative,0.7475216388702393,True
+5,negation,I can't say the experience was enjoyable.,negative,Tests indirect negation with positive trigger word,neutral,0.7003286480903625,False
+6,negation,The patch never fixed the crashing issue.,negative,Tests whether the model notices failed improvement statements,negative,0.48017415404319763,True
+7,negation,The movie was not as exciting as the trailer suggested.,negative,Tests comparative negation handling,neutral,0.6705450415611267,False
+8,lexical_trigger,The app used to be amazing but now it barely works.,negative,Tests whether strong positive cue words dominate final sentiment,negative,0.5967214703559875,True
+9,lexical_trigger,Great interface terrible performance.,negative,Tests conflicting positive and negative cue words,negative,0.9480417370796204,True
+10,lexical_trigger,The service sounds premium but feels unusable.,negative,Tests whether surface-level positive words mislead the classifier,neutral,0.7808822393417358,False
+11,lexical_trigger,The phone is incredibly fast at draining battery.,negative,Tests misleading positive performance wording,negative,0.4899848401546478,True
+12,domain_shift,The chef prepared a traditional pasta recipe for the event.,neutral,Recipe domain unrelated to app-review sentiment,positive,0.7438587546348572,False
+13,domain_shift,Heavy rain is expected across the northern region tomorrow.,neutral,Weather-report domain shift example,neutral,0.5730386972427368,True
+14,domain_shift,The senator announced a new economic reform proposal.,neutral,Political news outside app-review distribution,negative,0.3956405222415924,False
+15,domain_shift,Researchers discovered a new species in the rainforest.,neutral,Scientific reporting unrelated to app sentiment,neutral,0.4322986900806427,True
+16,length_extreme,Bad update.,negative,Very short negative input tests minimal context handling,negative,0.9450704455375671,True
+17,length_extreme,Absolutely perfect.,positive,Very short positive input tests cue-word dependence,positive,0.9059146046638489,True
+18,length_extreme,Not good.,negative,Short negation test with limited context,negative,0.6431654095649719,True
+19,length_extreme,"The application initially appeared stable and responsive during the first few days of use, but after multiple updates and prolonged usage the overall experience became increasingly frustrating due to crashes, freezes, and inconsistent notifications.",negative,Long sentence tests whether the model preserves sentiment over extended context,neutral,0.6884286999702454,False
+20,length_extreme,"Although the software introduced several innovative features and a cleaner interface design, the constant lag and memory issues made daily usage difficult and disappointing over time.",negative,Long example with mixed cues and delayed negative sentiment,neutral,0.7175084948539734,False
+21,sarcasm,Fantastic another crash during my presentation.,negative,Tests sarcasm where positive surface form hides negative intent,positive,0.7940424084663391,False
+22,sarcasm,Wonderful the app deleted all my files again.,negative,Tests sarcastic praise masking frustration,positive,0.8073188662528992,False
+23,sarcasm,Yeah this is exactly what users needed more ads everywhere.,negative,Tests sarcastic agreement with clearly negative implication,neutral,0.653367280960083,False
+24,sarcasm,Brilliant customer support they ignored me for two weeks.,negative,Tests sarcasm combined with customer-service complaint,positive,0.7872099280357361,False
+25,other,The app is acceptable but nothing special.,neutral,Tests mild neutral sentiment without strong emotional cues,neutral,0.8399670124053955,True
+26,other,I expected worse but the update is actually decent.,positive,Tests mixed expectations with mildly positive outcome,neutral,0.7812297940254211,False
+27,other,The product works sometimes depending on the device.,neutral,Tests inconsistent functionality and ambiguous sentiment,neutral,0.6473447680473328,True
+28,other,The game has beautiful graphics but repetitive gameplay.,neutral,Tests balanced positive and negative aspects,neutral,0.8213693499565125,True
+29,other,Customer support solved the issue faster than expected.,positive,Tests clearly positive service interaction,positive,0.5919144153594971,True
+30,other,The platform became harder to navigate after the redesign.,negative,Tests usability degradation sentiment,negative,0.5323264002799988,True
